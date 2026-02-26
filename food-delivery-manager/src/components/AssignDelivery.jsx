@@ -70,6 +70,12 @@ export default function AssignDelivery({ orders }) {
                   <span className="label">Distance</span>
                   <span className="value highlight">{result.order.deliveryDistance} km</span>
                 </div>
+                <div className="assigned-item">
+                  <span className="label">Payment</span>
+                  <span className={`value assigned-status ${result.order.isPaid ? "is-paid" : "is-unpaid"}`}>
+                    {result.order.isPaid ? "✓ Paid" : "⏳ Unpaid"}
+                  </span>
+                </div>
               </div>
             </div>
           )}

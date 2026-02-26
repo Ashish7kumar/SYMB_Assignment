@@ -21,7 +21,7 @@ export const assignDelivery = (orders, maxDistance) => {
   if (isNaN(max) || max <= 0) return { order: null, error: "Enter a valid max distance." };
 
   const eligible = orders.filter(
-    (o) => !o.isPaid && o.deliveryDistance <= max
+    (o) => !o.isCompleted && o.deliveryDistance <= max
   );
 
   if (eligible.length === 0) return { order: null, error: "No order available" };

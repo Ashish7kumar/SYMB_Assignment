@@ -92,7 +92,7 @@
 
 .assigned-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
 }
 
@@ -123,3 +123,6 @@
 @media (max-width: 600px) {
   .assigned-grid { grid-template-columns: 1fr 1fr; }
 }
+
+.assigned-status.is-paid   { color: #4ade80; }
+.assigned-status.is-unpaid { color: #fbbf24; }
