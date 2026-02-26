@@ -1,16 +1,15 @@
-.assign-card {
-  background: #fff;
-}
+
 
 .assign-desc {
-  font-size: 0.92rem;
-  color: #888;
+  font-size: 0.87rem;
+  color: rgba(232,230,240,0.45);
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .assign-row {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: flex-end;
   flex-wrap: wrap;
 }
@@ -18,133 +17,108 @@
 .assign-row .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .assign-row .form-group label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #888;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(232,230,240,0.45);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.7px;
 }
 
 .assign-row input[type="number"] {
-  padding: 10px 14px;
-  border: 2px solid #e8e8e8;
+  width: 200px;
+  padding: 11px 14px;
+  background: #0d0d14;
+  border: 1.5px solid rgba(255,255,255,0.1);
   border-radius: 10px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: #e8e6f0;
+  font-family: 'DM Sans', sans-serif;
   outline: none;
-  font-family: inherit;
-  width: 180px;
-  transition: border-color 0.2s;
+  transition: border-color 0.15s;
 }
+.assign-row input[type="number"]:focus { border-color: #ff6b35; }
+.assign-row input[type="number"]::placeholder { color: rgba(232,230,240,0.25); }
+.assign-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
 
-.assign-row input[type="number"]:focus {
-  border-color: #ff6b35;
-}
-
-.error {
-  color: #e53e3e;
-  font-size: 0.8rem;
-}
+.error { color: #f87171; font-size: 0.78rem; margin-top: 4px; }
 
 .btn-assign {
-  background: #1a1a2e;
-  color: white;
+  background: #ff6b35;
+  color: #fff;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 22px;
   border-radius: 10px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  font-family: inherit;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s, transform 0.1s;
   white-space: nowrap;
 }
-
-.btn-assign:hover {
-  background: #ff6b35;
-  transform: translateY(-2px);
-}
+.btn-assign:hover  { background: #e85d2a; }
+.btn-assign:active { transform: scale(0.98); }
 
 .output-panel {
   margin-top: 20px;
   border-radius: 12px;
-  padding: 20px 24px;
-  animation: fadeIn 0.3s ease;
+  padding: 20px 22px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.no-result {
-  background: #fff5f5;
-  border: 2px solid #fed7d7;
-}
-
-.success {
-  background: #f0fff4;
-  border: 2px solid #9ae6b4;
-}
+.no-result { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
+.success   { background: rgba(74,222,128,0.07);  border: 1px solid rgba(74,222,128,0.2);  }
 
 .no-order {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #c53030;
+  color: #f87171;
 }
-
-.no-icon {
-  font-size: 1.4rem;
-}
+.no-icon { font-size: 1.4rem; }
 
 .assigned-header {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: #276749;
+  color: #4ade80;
   margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .assigned-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
-.assigned-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+.assigned-item { display: flex; flex-direction: column; gap: 4px; }
 
 .assigned-item .label {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #888;
-  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: rgba(232,230,240,0.35);
+  font-weight: 700;
 }
 
 .assigned-item .value {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #e8e6f0;
 }
 
 .assigned-item .value.mono {
   font-family: 'Courier New', monospace;
-  font-size: 0.88rem;
-  color: #555;
+  font-size: 0.82rem;
+  color: rgba(232,230,240,0.55);
 }
 
-.assigned-item .value.highlight {
-  color: #ff6b35;
-}
+.assigned-item .value.highlight { color: #ff6b35; }
 
 @media (max-width: 600px) {
   .assigned-grid { grid-template-columns: 1fr 1fr; }

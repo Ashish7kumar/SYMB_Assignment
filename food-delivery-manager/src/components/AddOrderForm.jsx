@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { generateOrderId } from "../utils/orderLogic";
 import "./AddOrderForm.css";
 
-// ── Error Modal — renders at <body> level via portal ──────────
+
 function ErrorModal({ errors, onClose }) {
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
@@ -28,7 +28,7 @@ function ErrorModal({ errors, onClose }) {
   );
 }
 
-// ── Success Toast — renders at <body> level via portal ────────
+
 function SuccessToast({ name }) {
   return createPortal(
     <div className="toast-success">
@@ -38,7 +38,7 @@ function SuccessToast({ name }) {
   );
 }
 
-// ── Main Form ─────────────────────────────────────────────────
+
 export default function AddOrderForm({ onAddOrder }) {
   const [form, setForm] = useState({
     restaurantName: "",
@@ -53,7 +53,7 @@ export default function AddOrderForm({ onAddOrder }) {
   const [toastName, setToastName]     = useState("");
   const [touched, setTouched]         = useState({});
 
-  // ── Validation ─────────────────────────────────────────────
+
   const validate = (f) => {
     const fieldErrs = {};
     const modalList = [];
@@ -97,7 +97,7 @@ export default function AddOrderForm({ onAddOrder }) {
     return { fieldErrs, modalList };
   };
 
-  // ── Submit ─────────────────────────────────────────────────
+ 
   const handleSubmit = () => {
     setTouched({ restaurantName: true, itemCount: true, deliveryDistance: true });
     const { fieldErrs, modalList } = validate(form);
@@ -127,7 +127,7 @@ export default function AddOrderForm({ onAddOrder }) {
     setTimeout(() => setShowToast(false), 2800);
   };
 
-  // ── Change + blur ──────────────────────────────────────────
+ 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const updated = { ...form, [name]: type === "checkbox" ? checked : value };
