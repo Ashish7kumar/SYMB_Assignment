@@ -75,6 +75,10 @@ body {
   color: #ff6b35;
 }
 
+.stat-num.completed-num {
+  color: #818cf8;
+}
+
 .stat-label {
   font-size: 0.7rem;
   color: rgba(255,255,255,0.45);

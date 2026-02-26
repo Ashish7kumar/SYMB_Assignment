@@ -7,9 +7,9 @@ import { filterOrders } from "./utils/orderLogic";
 import "./App.css";
 
 const SAMPLE_ORDERS = [
-  { orderId: "ORD-A1B2C3", restaurantName: "Pizza Palace", itemCount: 3, isPaid: false, deliveryDistance: 4.5 },
-  { orderId: "ORD-D4E5F6", restaurantName: "Burger Barn", itemCount: 2, isPaid: true, deliveryDistance: 2.1 },
-  { orderId: "ORD-G7H8I9", restaurantName: "Sushi Stop", itemCount: 5, isPaid: false, deliveryDistance: 7.8 },
+  { orderId: "ORD-A1B2C3", restaurantName: "Pizza Palace", itemCount: 3, isPaid: false, deliveryDistance: 4.5, isCompleted: false },
+  { orderId: "ORD-D4E5F6", restaurantName: "Burger Barn", itemCount: 2, isPaid: true, deliveryDistance: 2.1, isCompleted: false },
+  { orderId: "ORD-G7H8I9", restaurantName: "Sushi Stop", itemCount: 5, isPaid: false, deliveryDistance: 7.8, isCompleted: false },
 ];
 
 export default function App() {
@@ -18,7 +18,13 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("orders");
 
   const handleAddOrder = (order) => {
-    setOrders((prev) => [order, ...prev]);
+    setOrders((prev) => [{ ...order, isCompleted: false }, ...prev]);
+  };
+
+  const handleMarkCompleted = (orderId) => {
+    setOrders((prev) =>
+      prev.map((o) => o.orderId === orderId ? { ...o, isCompleted: true, isPaid: true } : o)
+    );
   };
 
   const filteredOrders = useMemo(() => filterOrders(orders, filters), [orders, filters]);
@@ -40,22 +46,26 @@ export default function App() {
               <span className="stat-label">Total</span>
             </div>
             <div className="stat">
-              <span className="stat-num">{orders.filter(o => !o.isPaid).length}</span>
+              <span className="stat-num">{orders.filter(o => !o.isPaid && !o.isCompleted).length}</span>
               <span className="stat-label">Unpaid</span>
             </div>
             <div className="stat">
-              <span className="stat-num">{orders.filter(o => o.isPaid).length}</span>
+              <span className="stat-num">{orders.filter(o => o.isPaid && !o.isCompleted).length}</span>
               <span className="stat-label">Paid</span>
+            </div>
+            <div className="stat">
+              <span className="stat-num completed-num">{orders.filter(o => o.isCompleted).length}</span>
+              <span className="stat-label">Done</span>
             </div>
           </div>
         </div>
       </header>
 
       <main className="main">
-        
+        {/* Add Order always visible on top */}
         <AddOrderForm onAddOrder={handleAddOrder} />
 
-      
+        {/* Tabs */}
         <div className="tabs">
           <button
             className={`tab ${activeTab === "orders" ? "active" : ""}`}
@@ -67,12 +77,12 @@ export default function App() {
             className={`tab ${activeTab === "filter" ? "active" : ""}`}
             onClick={() => setActiveTab("filter")}
           >
-            
+            🔍 Filter & Assign
           </button>
         </div>
 
         {activeTab === "orders" && (
-          <OrdersList orders={orders} />
+          <OrdersList orders={orders} onMarkCompleted={handleMarkCompleted} />
         )}
 
         {activeTab === "filter" && (
@@ -82,7 +92,7 @@ export default function App() {
               onFilterChange={setFilters}
               filteredCount={filteredOrders.length}
             />
-            <OrdersList orders={filteredOrders} />
+            <OrdersList orders={filteredOrders} onMarkCompleted={handleMarkCompleted} />
             <AssignDelivery orders={orders} />
           </>
         )}
