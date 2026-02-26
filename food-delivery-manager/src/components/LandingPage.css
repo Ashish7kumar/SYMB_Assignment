@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
 
-
+/* ── Root vars ───────────────────────────────────────────── */
 :root {
   --bg:      #0a0a0f;
   --bg2:     #111118;
@@ -12,7 +12,7 @@
   --card-bg: rgba(255,255,255,0.04);
 }
 
-
+/* ── Base ────────────────────────────────────────────────── */
 .landing {
   background: var(--bg);
   color: var(--text);
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-
+/* grain texture */
 .grain {
   pointer-events: none;
   position: fixed;
@@ -33,7 +33,7 @@
   background-size: 200px;
 }
 
-
+/* ── Nav ─────────────────────────────────────────────────── */
 .lnav {
   position: sticky;
   top: 0;
@@ -91,7 +91,7 @@
   color: #fff;
 }
 
-
+/* ── Hero ────────────────────────────────────────────────── */
 .hero {
   position: relative;
   z-index: 1;
@@ -100,19 +100,8 @@
   padding: 100px 60px 80px;
 }
 
+/* radial glow behind hero */
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 700px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(255,107,53,0.12) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
 
 .hero-badge {
   display: inline-block;
@@ -199,6 +188,7 @@
   font-weight: 500;
 }
 
+/* ── Floating mock cards ─────────────────────────────────── */
 .hero-cards {
   position: relative;
   margin-top: 70px;
@@ -217,20 +207,13 @@
   transition: transform 0.3s;
 }
 
-.mock-card:hover { transform: translateY(-6px) !important; }
 
-.mc1 { top: 0;   left: 0;   transform: rotate(-3deg); animation: floatA 4s ease-in-out infinite; }
-.mc2 { top: 20px; left: 220px; transform: rotate(1.5deg); animation: floatB 4.5s ease-in-out infinite; }
-.mc3 { top: -10px; left: 440px; transform: rotate(-1deg); animation: floatA 5s ease-in-out infinite 0.5s; }
 
-@keyframes floatA {
-  0%,100% { transform: rotate(-3deg) translateY(0); }
-  50%      { transform: rotate(-3deg) translateY(-8px); }
-}
-@keyframes floatB {
-  0%,100% { transform: rotate(1.5deg) translateY(0); }
-  50%      { transform: rotate(1.5deg) translateY(-8px); }
-}
+.mc1 { top: 0;   left: 0;   transform: rotate(-3deg); }
+.mc2 { top: 20px; left: 220px; transform: rotate(1.5deg); }
+.mc3 { top: -10px; left: 440px; transform: rotate(-1deg); }
+
+
 
 .mc-top {
   display: flex;
@@ -280,13 +263,12 @@
   align-items: center;
   gap: 10px;
   font-size: 0.82rem;
-  animation: floatB 3.5s ease-in-out infinite;
 }
 
 .ma-label { color: var(--orange); font-weight: 700; }
 .ma-val   { color: var(--text);   font-weight: 500; }
 
-
+/* ── Stats strip ─────────────────────────────────────────── */
 .stats-strip {
   position: relative;
   z-index: 1;
@@ -327,7 +309,7 @@
   letter-spacing: 0.8px;
 }
 
-
+/* ── Features ────────────────────────────────────────────── */
 .features {
   position: relative;
   z-index: 1;
@@ -396,7 +378,7 @@
   margin: 0;
 }
 
-
+/* ── CTA Banner ──────────────────────────────────────────── */
 .cta-banner {
   position: relative;
   z-index: 1;
@@ -413,7 +395,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 300px;
-  background: radial-gradient(ellipse, rgba(255,107,53,0.1) 0%, transparent 70%);
+  background: none;
   pointer-events: none;
 }
 
@@ -432,6 +414,7 @@
   margin-bottom: 36px;
 }
 
+/* ── Footer ──────────────────────────────────────────────── */
 .lfooter {
   border-top: 1px solid var(--border);
   padding: 24px 60px;
@@ -443,13 +426,13 @@
   z-index: 1;
 }
 
-
+/* ── Animations ──────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-
+/* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .lnav        { padding: 16px 24px; }
   .hero        { padding: 70px 24px 60px; }
