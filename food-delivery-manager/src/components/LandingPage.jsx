@@ -142,7 +142,7 @@ export default function LandingPage({ onEnter }) {
       
       <footer className="lfooter">
         
-        <span>Built By Ashish</span>
+        <span>Built By Ashish with 💖</span>
       </footer>
     </div>
   );
